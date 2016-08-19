@@ -13,14 +13,14 @@ const livereload = require('gulp-livereload');
 const connect = require('gulp-connect');
 const open = require('gulp-open');
 
-gulp.task('js-check', () => {
+gulp.task('js-check', function() {
     return gulp.src('src/main/javascript/**/*.js')
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
 });
 
-gulp.task('js-build', [ 'js-check' ], () => {
+gulp.task('js-build', [ 'js-check' ], function() {
     browserify('src/main/javascript/boot.js', { debug: true })
         .transform(babelify, { presets: [ "es2015"] })
         .bundle()
@@ -30,7 +30,7 @@ gulp.task('js-build', [ 'js-check' ], () => {
         .pipe(gulp.dest('src/main/webapp/js'))
 });
 
-gulp.task('js-watch', [ 'js-check' ], () => {
+gulp.task('js-watch', [ 'js-check' ], function() {
     const bundler = watchify(browserify('src/main/javascript/boot.js', { debug: true })
         .transform(babelify, { presets: [ "es2015"] }))
         .on('update', function() {
@@ -51,7 +51,7 @@ gulp.task('js-watch', [ 'js-check' ], () => {
 
 });
 
-gulp.task('sass-compile',() => {
+gulp.task('sass-compile', function() {
     return gulp.src('src/main/sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('src/main/webapp/css'))

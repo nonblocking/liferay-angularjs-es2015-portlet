@@ -24,7 +24,7 @@ Just run **mvn package** on the command line.
 
 ### On a Liferay 6.2 Portal
 
-Drop the generated _liferay-angularjs-portlet-*.war_ file in the_target_ directory into the *{liferay-home}/deploy* folder.
+Drop the generated _liferay-angularjs-es2015-portlet-*.war_ file in the_target_ directory into the *{liferay-home}/deploy* folder.
 Alternatively execute on the command line: **mvn liferay:deploy -D\<base_path_of_your_lifery_installation\>**
 
 ### Standalone
